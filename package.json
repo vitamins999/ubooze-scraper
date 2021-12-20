@@ -1,0 +1,30 @@
+{
+  "name": "ubooze-scraper",
+  "version": "1.0.0",
+  "description": "Web scraper for UK supermarket alcohol prices, with PostgreSQL database integration.  Intended for use with uBooze web app, to populate the website's database.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitamins999/ubooze-scraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitamins999/ubooze-scraper/issues"
+  },
+  "homepage": "https://github.com/vitamins999/ubooze-scraper#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "knex": "^0.95.14",
+    "objection": "^3.0.0",
+    "pg": "^8.7.1",
+    "prompt": "^1.2.0",
+    "puppeteer": "^13.0.0",
+    "puppeteer-autoscroll-down": "^1.0.0"
+  }
+}
