@@ -20,6 +20,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
+    "currency.js": "^2.0.4",
     "knex": "^0.95.14",
     "objection": "^3.0.0",
     "pg": "^8.7.1",
