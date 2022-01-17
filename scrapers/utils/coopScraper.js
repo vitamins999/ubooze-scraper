@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const currency = require('currency.js');
 const puppeteer = require('puppeteer');
-const scrollPageToBottom = require('puppeteer-autoscroll-down');
+const { scrollPageToBottom } = require('puppeteer-autoscroll-down');
 
 const coopScraper = async (url, drinkType, drinkSubtype, scrollNum = 1) => {
   try {
@@ -26,8 +26,6 @@ const coopScraper = async (url, drinkType, drinkSubtype, scrollNum = 1) => {
       await page.click('.btn--secondary');
       await scrollPageToBottom(page, 250, 300);
     }
-
-    await page.screenshot({ path: './screenshot.jpg', type: 'jpeg' });
 
     const html = await page.content();
 
@@ -69,7 +67,7 @@ const coopScraper = async (url, drinkType, drinkSubtype, scrollNum = 1) => {
 
     return products;
   } catch (error) {
-    throw new Error(`*** An error occured with waitroseScraper: ${error} ***`);
+    throw new Error(`*** An error occured with coopScraper: ${error} ***`);
   }
 };
 

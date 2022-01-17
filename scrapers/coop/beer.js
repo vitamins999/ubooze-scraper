@@ -2,10 +2,19 @@ const coopScraper = require('../utils/coopScraper');
 const removeDuplicates = require('../utils/removeDuplicates');
 
 // Beer URL
-const beerURL = 'https://shop.coop.co.uk/category/47';
+const beerURL = 'https://shop.coop.co.uk/category/270';
+
+// Cider URL
+const ciderURL = 'https://shop.coop.co.uk/category/271';
 
 const coopScrapeBeer = async () => {
-  let beer = await coopScraper(beerURL, 'beer', '', 10);
+  // Beer
+  const beerLager = await coopScraper(beerURL, 'beer', '', 10);
+
+  // Cider
+  const beerCider = await coopScraper(ciderURL, 'beer', 'cider');
+
+  let beer = [...beerLager, ...beerCider];
 
   beer = removeDuplicates(beer);
 
