@@ -6,6 +6,7 @@ const prompt = require('prompt');
 
 const scrapeCoop = require('./scrapers/coop/allDrinks');
 const scrapeIceland = require('./scrapers/iceland/allDrinks');
+const scrapeTesco = require('./scrapers/tesco/allDrinks');
 
 const knex = Knex(knexFile.development);
 Model.knex(knex);
@@ -23,7 +24,7 @@ console.log('7 - Waitrose');
 prompt.start();
 
 prompt.get('Please select (0-7)', async (err, result) => {
-  let answer = result['Please select (0-7)'];
+  const answer = result['Please select (0-7)'];
 
   switch (answer) {
     case '0':
@@ -49,7 +50,9 @@ prompt.get('Please select (0-7)', async (err, result) => {
       console.log('Sainsburys selected');
       break;
     case '6':
-      console.log('Tesco selected');
+      console.log('Scraping Tesco...');
+      const tescoData = await scrapeTesco();
+      console.log(tescoData);
       break;
     case '7':
       console.log('Waitrose selected');

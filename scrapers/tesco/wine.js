@@ -14,6 +14,8 @@ const wineRedURL4 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/red-wine?page=4&count=48';
 const wineRedURL5 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/red-wine?page=5&count=48';
+const wineRedURL6 =
+  'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/red-wine?page=6&count=48';
 
 // White
 const wineWhiteURL1 =
@@ -24,6 +26,8 @@ const wineWhiteURL3 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/white-wine?page=3&count=48';
 const wineWhiteURL4 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/white-wine?page=4&count=48';
+const wineWhiteURL5 =
+  'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/white-wine?page=5&count=48';
 
 // Rose
 const wineRoseURL1 =
@@ -46,8 +50,10 @@ const wineFruityURL =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/fruit-flavoured-wine';
 
 // Dessert
-const wineDessertURL =
+const wineDessertURL1 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/dessert-and-sweeter-style-wines';
+const wineDessertURL2 =
+  'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/dessert-and-sweeter-style-wines?page=2';
 
 // Fortified Wine (Port and Sherry) and Vermouth
 const wineFortifiedVermouthURL =
@@ -56,8 +62,6 @@ const wineFortifiedVermouthURL =
 // Small Wine Bottles
 const wineSmallURL1 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/small-wine-bottles-and-cans?page=1&count=48';
-// const wineSmallURL2 =
-//   'https://www.tesco.com/groceries/en-GB/shop/drinks/wine/small-wine-bottles?page=2&count=48';
 
 // Low Alcohol
 const wineLowAlcoholURL =
@@ -70,6 +74,7 @@ const tescoScrapeWine = async () => {
   const wineRed3 = await tescoScraper(wineRedURL3, 'wine', 'red');
   const wineRed4 = await tescoScraper(wineRedURL4, 'wine', 'red');
   const wineRed5 = await tescoScraper(wineRedURL5, 'wine', 'red');
+  const wineRed6 = await tescoScraper(wineRedURL6, 'wine', 'red');
 
   const wineRed = [
     ...wineRed1,
@@ -77,6 +82,7 @@ const tescoScrapeWine = async () => {
     ...wineRed3,
     ...wineRed4,
     ...wineRed5,
+    ...wineRed6,
   ];
 
   // White
@@ -84,12 +90,14 @@ const tescoScrapeWine = async () => {
   const wineWhite2 = await tescoScraper(wineWhiteURL2, 'wine', 'white');
   const wineWhite3 = await tescoScraper(wineWhiteURL3, 'wine', 'white');
   const wineWhite4 = await tescoScraper(wineWhiteURL4, 'wine', 'white');
+  const wineWhite5 = await tescoScraper(wineWhiteURL5, 'wine', 'white');
 
   const wineWhite = [
     ...wineWhite1,
     ...wineWhite2,
     ...wineWhite3,
     ...wineWhite4,
+    ...wineWhite5,
   ];
 
   // Rose
@@ -122,7 +130,10 @@ const tescoScrapeWine = async () => {
   const wineFruity = await tescoScraper(wineFruityURL, 'wine', 'fruity');
 
   // Dessert
-  const wineDessert = await tescoScraper(wineDessertURL, 'wine', 'dessert');
+  const wineDessert1 = await tescoScraper(wineDessertURL1, 'wine', 'dessert');
+  const wineDessert2 = await tescoScraper(wineDessertURL2, 'wine', 'dessert');
+
+  const wineDessert = [...wineDessert1, ...wineDessert2];
 
   // Fortified Wine (Port and Sherry) and Vermouth
   const wineFortifiedVermouth = await tescoScraper(
@@ -133,12 +144,8 @@ const tescoScrapeWine = async () => {
 
   // Small wine bottles
   const wineSmall1 = await tescoScraper(wineSmallURL1, 'wine', 'small');
-  // const wineSmall2 = await tescoScraper(wineSmallURL2, 'wine', 'small');
 
-  const wineSmall = [
-    ...wineSmall1,
-    // ...wineSmall2
-  ];
+  const wineSmall = [...wineSmall1];
 
   // Low alcohol
   const wineLowAlcohol = await tescoScraper(

@@ -8,8 +8,6 @@ const spiritsGinURL1 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/spirits/gin?page=1&count=48';
 const spiritsGinURL2 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/spirits/gin?page=2&count=48';
-// const spiritsGinURL3 =
-// 'https://www.tesco.com/groceries/en-GB/shop/drinks/spirits/gin?page=3&count=48';
 
 // Whisky
 const spiritsWhiskyURL1 =
@@ -24,8 +22,10 @@ const spiritsVodkaURL =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/spirits/vodka';
 
 // Rum
-const spiritsRumURL =
+const spiritsRumURL1 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/spirits/rum';
+const spiritsRumURL2 =
+  'https://www.tesco.com/groceries/en-GB/shop/drinks/spirits/rum?page=2';
 
 // Brandy & Cognac
 const spiritsBrandyCognacURL =
@@ -45,15 +45,10 @@ const spiritsPremixURL2 =
 const spiritsPremixURL3 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/spirits/ready-to-drink-premixed-spirits-and-cocktails?page=3&count=48';
 
-// Low alcohol
-const spiritsLowAlcoholURL =
-  'https://www.tesco.com/groceries/en-GB/shop/drinks/alcohol-free-and-low-alcohol-drinks/low-and-no-alcohol-spirits';
-
 const tescoScrapeSpirits = async () => {
   // Gin
   const spiritsGin1 = await tescoScraper(spiritsGinURL1, 'spirits', 'gin');
   const spiritsGin2 = await tescoScraper(spiritsGinURL2, 'spirits', 'gin');
-  // const spiritsGin3 = await tescoScraper(spiritsGinURL3, 'spirits', 'gin');
 
   const spiritsGin = [...spiritsGin1, ...spiritsGin2];
 
@@ -84,7 +79,10 @@ const tescoScrapeSpirits = async () => {
   const spiritsVodka = await tescoScraper(spiritsVodkaURL, 'spirits', 'vodka');
 
   // Rum
-  const spiritsRum = await tescoScraper(spiritsRumURL, 'spirits', 'rum');
+  const spiritsRum1 = await tescoScraper(spiritsRumURL1, 'spirits', 'rum');
+  const spiritsRum2 = await tescoScraper(spiritsRumURL2, 'spirits', 'rum');
+
+  const spiritsRum = [...spiritsRum1, ...spiritsRum2];
 
   // Brandy & Cognac
   const spiritsBrandyCognac = await tescoScraper(
@@ -133,13 +131,6 @@ const tescoScrapeSpirits = async () => {
     ...spiritsPremix3,
   ];
 
-  // Low alcohol
-  // const spiritsLowAlcohol = await tescoScraper(
-  //   spiritsLowAlcoholURL,
-  //   'spirits',
-  //   'low alcohol'
-  // );
-
   let spirits = [
     ...spiritsGin,
     ...spiritsWhisky,
@@ -148,7 +139,6 @@ const tescoScrapeSpirits = async () => {
     ...spiritsBrandyCognac,
     ...spiritsTequilaLiqueurs,
     ...spiritsPremix,
-    // ...spiritsLowAlcohol,
   ];
 
   spirits = removeDuplicates(spirits);

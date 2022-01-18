@@ -10,11 +10,8 @@ const beerLagerURL2 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/beer-and-cider/beer-lager?page=2&count=48';
 const beerLagerURL3 =
   'https://www.tesco.com/groceries/en-GB/shop/drinks/beer-and-cider/beer-lager?page=3&count=48';
-
-// const beerLagerWorldURL1 =
-//   'https://www.tesco.com/groceries/en-GB/shop/drinks/beer-and-cider/beer-world-lager?page=1&count=48';
-// const beerLagerWorldURL2 =
-//   'https://www.tesco.com/groceries/en-GB/shop/drinks/beer-and-cider/beer-world-lager?page=2&count=48';
+const beerLagerURL4 =
+  'https://www.tesco.com/groceries/en-GB/shop/drinks/beer-and-cider/beer-lager?page=4&count=48';
 
 // Ale & Bitter
 const beerAleURL1 =
@@ -53,23 +50,14 @@ const tescoScrapeBeer = async () => {
   const beerLager1 = await tescoScraper(beerLagerURL1, 'beer', 'lager');
   const beerLager2 = await tescoScraper(beerLagerURL2, 'beer', 'lager');
   const beerLager3 = await tescoScraper(beerLagerURL3, 'beer', 'lager');
+  const beerLager4 = await tescoScraper(beerLagerURL4, 'beer', 'lager');
 
-  const beerLagerRegular = [...beerLager1, ...beerLager2, ...beerLager3];
-
-  // const beerLagerWorld1 = await tescoScraper(
-  //   beerLagerWorldURL1,
-  //   'beer',
-  //   'lager'
-  // );
-  // const beerLagerWorld2 = await tescoScraper(
-  //   beerLagerWorldURL2,
-  //   'beer',
-  //   'lager'
-  // );
-
-  // const beerLagerWorld = [...beerLagerWorld1, ...beerLagerWorld2];
-
-  const beerLager = [...beerLagerRegular];
+  const beerLager = [
+    ...beerLager1,
+    ...beerLager2,
+    ...beerLager3,
+    ...beerLager4,
+  ];
 
   // Ale and Bitter
   const beerAle1 = await tescoScraper(beerAleURL1, 'beer', 'ale');
