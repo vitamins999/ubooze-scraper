@@ -61,7 +61,7 @@ const waitroseScrapeBeer = async () => {
 
   beer = removeDuplicates(beer);
 
-  console.log('Beer successfully scraped!');
+  console.log('Beer scraped!');
 
   return beer;
 };
