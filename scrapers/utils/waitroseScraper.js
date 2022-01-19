@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const currency = require('currency.js');
 const puppeteer = require('puppeteer');
-const scrollPageToBottom = require('puppeteer-autoscroll-down');
+const { scrollPageToBottom } = require('puppeteer-autoscroll-down');
 
 const waitroseScraper = async (url, drinkType, drinkSubtype, scrollNum = 1) => {
   try {
@@ -26,8 +26,8 @@ const waitroseScraper = async (url, drinkType, drinkSubtype, scrollNum = 1) => {
     await scrollPageToBottom(page, 250, 300);
 
     for (let i = 1; i < scrollNum; i++) {
-      await page.focus('.button___2UT_5');
-      await page.click('.button___2UT_5');
+      await page.focus('[data-actiontype="load"]');
+      await page.click('[data-actiontype="load"]');
       await scrollPageToBottom(page, 250, 300);
     }
 
@@ -45,7 +45,11 @@ const waitroseScraper = async (url, drinkType, drinkSubtype, scrollNum = 1) => {
       const size = $(el).find('.size___2HSwr').first().text();
       const productName = `${productNameText} ${size}`;
 
-      const priceText = $(el).find('.prices___1JkR4').find('span span').text();
+      const priceText = $(el)
+        .find('[data-test="product-pod-price"]')
+        .find('span span')
+        .first()
+        .text();
       const price = currency(priceText.slice(1)).intValue;
 
       let offer = $(el).find('.offerDescription___1A6Ew').first().text();

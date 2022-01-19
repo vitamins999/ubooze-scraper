@@ -7,6 +7,7 @@ const prompt = require('prompt');
 const scrapeCoop = require('./scrapers/coop/allDrinks');
 const scrapeIceland = require('./scrapers/iceland/allDrinks');
 const scrapeTesco = require('./scrapers/tesco/allDrinks');
+const scrapeWaitrose = require('./scrapers/waitrose/allDrinks');
 
 const knex = Knex(knexFile.development);
 Model.knex(knex);
@@ -55,7 +56,9 @@ prompt.get('Please select (0-7)', async (err, result) => {
       console.log(tescoData);
       break;
     case '7':
-      console.log('Waitrose selected');
+      console.log('Scraping Waitrose...');
+      const waitroseData = await scrapeWaitrose();
+      console.log(waitroseData);
       break;
     default:
       console.log('Valid number not entered.  Please try again.');

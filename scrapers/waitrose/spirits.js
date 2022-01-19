@@ -49,7 +49,7 @@ const spiritsLowAlcoholURL =
 
 const waitroseScrapeSpirits = async () => {
   // Gin
-  const spiritsGin = await waitroseScraper(spiritsGinURL, 'spirits', 'gin');
+  const spiritsGin = await waitroseScraper(spiritsGinURL, 'spirits', 'gin', 2);
 
   // Whisky
   const spiritsWhisky = await waitroseScraper(

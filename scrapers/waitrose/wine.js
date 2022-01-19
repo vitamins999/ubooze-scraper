@@ -163,7 +163,8 @@ const waitroseScrapeWine = async () => {
   const wineWhiteSauvignonBlanc = await waitroseScraper(
     wineWhiteSauvignonBlancURL,
     'wine',
-    'white'
+    'white',
+    2
   );
   const wineWhiteViognier = await waitroseScraper(
     wineWhiteViognierURL,
