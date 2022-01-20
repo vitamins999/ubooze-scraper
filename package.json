@@ -26,6 +26,8 @@
     "pg": "^8.7.1",
     "prompt": "^1.2.0",
     "puppeteer": "^13.0.0",
-    "puppeteer-autoscroll-down": "^1.0.0"
+    "puppeteer-autoscroll-down": "^1.0.0",
+    "puppeteer-extra": "^3.2.3",
+    "puppeteer-extra-plugin-stealth": "^2.9.0"
   }
 }
