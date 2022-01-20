@@ -8,8 +8,6 @@ const spiritsGinURL1 =
   'https://groceries.asda.com/aisle/beer-wine-spirits/spirits/gin/1896568675';
 const spiritsGinURL2 =
   'https://groceries.asda.com/aisle/beer-wine-spirits/spirits/gin/1896568675?page=2';
-const spiritsGinURL3 =
-  'https://groceries.asda.com/aisle/beer-wine-spirits/spirits/gin/1896568675?page=3';
 
 // Whisky
 const spiritsWhiskyURL1 =
@@ -39,9 +37,8 @@ const asdaScrapeSpirits = async () => {
   // Gin
   const spiritsGin1 = await asdaScraper(spiritsGinURL1, 'spirits', 'gin');
   const spiritsGin2 = await asdaScraper(spiritsGinURL2, 'spirits', 'gin');
-  const spiritsGin3 = await asdaScraper(spiritsGinURL3, 'spirits', 'gin');
 
-  const spiritsGin = [...spiritsGin1, ...spiritsGin2, ...spiritsGin3];
+  const spiritsGin = [...spiritsGin1, ...spiritsGin2];
 
   // Whisky
   const spiritsWhisky1 = await asdaScraper(
