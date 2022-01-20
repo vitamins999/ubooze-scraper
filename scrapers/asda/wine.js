@@ -5,43 +5,41 @@ const removeDuplicates = require('../utils/removeDuplicates');
 
 // Red
 const wineRedPinotNoirURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine-by-grape/pinot-noir/723908947';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine/pinot-noir/1215685911554-1215345814806-910000975652-1215681528968';
 const wineRedMalbecURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine-by-grape/malbec/2978208221';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine/malbec/1215685911554-1215345814806-910000975652-1215681528620';
 const wineRedCabernetSauvignonURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine-by-grape/cabernet-sauvignon/468655264';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine/cabernet-sauvignon/1215685911554-1215345814806-910000975652-1215681529358';
 const wineRedRiojaURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine-by-grape/rioja/4184691459';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine/rioja/1215685911554-1215345814806-910000975652-1215681748195';
 const wineRedShirazURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine-by-grape/shiraz/960752695';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine/shiraz/1215685911554-1215345814806-910000975652-1215681528701';
 const wineRedMerlotURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine-by-grape/merlot/396470166';
-const wineRedOtherURL1 =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine-by-grape/all-other-grapes/1821513990';
-const wineRedOtherURL2 =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine-by-grape/all-other-grapes/1821513990?page=2';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine/merlot/1215685911554-1215345814806-910000975652-1215681527474';
+const wineRedOtherURL =
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/red-wine/all-other-grapes/1215685911554-1215345814806-910000975652-1215681529165';
 
 // White
 const wineWhitePinotGrigioURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine-by-grape/pinot-grigio/2394761614';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine/pinot-grigio/1215685911554-1215345814806-910000975549-1215681533996';
 const wineWhiteSauvignonBlancURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine-by-grape/sauvignon-blanc/2337749207';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine/sauvignon-blanc/1215685911554-1215345814806-910000975549-1215681534652';
 const wineWhiteChardonnayURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine-by-grape/chardonnay/2107719690';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine/chardonnay/1215685911554-1215345814806-910000975549-1215681534822';
 const wineWhiteCheninBlancURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine-by-grape/chenin-blanc/382271622';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine/chenin-blanc/1215685911554-1215345814806-910000975549-1215681534985';
 const wineWhiteOtherURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine-by-grape/all-other-grapes/1495835241';
+  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/white-wine/all-other-grapes/1215685911554-1215345814806-910000975549-1215681618467';
 
 // Rose
-const wineRoseURL =
-  'https://groceries.asda.com/shelf/beer-wine-spirits/wine/rose-wine/rose-wine/375123009';
+const wineRoseURL1 =
+  'https://groceries.asda.com/aisle/beer-wine-spirits/wine/rose-wine/1215685911554-1215345814806-910000975510';
+const wineRoseURL2 =
+  'https://groceries.asda.com/aisle/beer-wine-spirits/wine/rose-wine/1215685911554-1215345814806-910000975510?page=2';
 
 // Sparkling
-const wineSparklingURL1 =
+const wineSparklingURL =
   'https://groceries.asda.com/aisle/beer-wine-spirits/prosecco-champagne-sparkling-wine/view-all-fizz/2105356077';
-const wineSparklingURL2 =
-  'https://groceries.asda.com/aisle/beer-wine-spirits/prosecco-champagne-sparkling-wine/view-all-fizz/2105356077?page=2';
 
 // Wine Boxes
 const wineBoxesWhiteURL =
@@ -54,10 +52,6 @@ const wineBoxesRoseURL =
 // Fortified wine (Sherry and Port) and Vermouth
 const wineFortifiedVermouthURL =
   'https://groceries.asda.com/aisle/beer-wine-spirits/wine/port-sherry-vermouth/124623377';
-
-// Fruity
-const wineFruityURL =
-  'https://groceries.asda.com/aisle/beer-wine-spirits/wine/fruit-flavoured-wine/3256698944';
 
 // Small Bottles
 const wineSmallURL =
@@ -83,8 +77,7 @@ const asdaScrapeWine = async () => {
   const wineRedRioja = await asdaScraper(wineRedRiojaURL, 'wine', 'red');
   const wineRedShiraz = await asdaScraper(wineRedShirazURL, 'wine', 'red');
   const wineRedMerlot = await asdaScraper(wineRedMerlotURL, 'wine', 'red');
-  const wineRedOther1 = await asdaScraper(wineRedOtherURL1, 'wine', 'red');
-  const wineRedOther2 = await asdaScraper(wineRedOtherURL2, 'wine', 'red');
+  const wineRedOther = await asdaScraper(wineRedOtherURL, 'wine', 'red');
 
   const wineRed = [
     ...wineRedPinotNoir,
@@ -93,8 +86,7 @@ const asdaScrapeWine = async () => {
     ...wineRedRioja,
     ...wineRedShiraz,
     ...wineRedMerlot,
-    ...wineRedOther1,
-    ...wineRedOther2,
+    ...wineRedOther,
   ];
 
   // White
@@ -133,21 +125,17 @@ const asdaScrapeWine = async () => {
   ];
 
   // Rose
-  const wineRose = await asdaScraper(wineRoseURL, 'wine', 'rose');
+  const wineRose1 = await asdaScraper(wineRoseURL1, 'wine', 'rose');
+  const wineRose2 = await asdaScraper(wineRoseURL2, 'wine', 'rose');
+
+  const wineRose = [...wineRose1, ...wineRose2];
 
   // Sparkling
-  const wineSparkling1 = await asdaScraper(
-    wineSparklingURL1,
+  const wineSparkling = await asdaScraper(
+    wineSparklingURL,
     'wine',
     'sparkling'
   );
-  const wineSparkling2 = await asdaScraper(
-    wineSparklingURL2,
-    'wine',
-    'sparkling'
-  );
-
-  const wineSparkling = [...wineSparkling1, ...wineSparkling2];
 
   // Wine Boxes
   const wineBoxesWhite = await asdaScraper(wineBoxesWhiteURL, 'wine', 'boxes');
@@ -162,9 +150,6 @@ const asdaScrapeWine = async () => {
     'wine',
     'fortified'
   );
-
-  // Fruity
-  const wineFruity = await asdaScraper(wineFruityURL, 'wine', 'fruity');
 
   // Small Bottles
   const wineSmall = await asdaScraper(wineSmallURL, 'wine', 'small');
@@ -183,7 +168,6 @@ const asdaScrapeWine = async () => {
     ...wineSparkling,
     ...wineBoxes,
     ...wineFortifiedVermouth,
-    ...wineFruity,
     ...wineSmall,
     ...wineLowAlcohol,
   ];

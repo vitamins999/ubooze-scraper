@@ -4,6 +4,7 @@ const knexFile = require('./knexfile');
 
 const prompt = require('prompt');
 
+const scrapeAsda = require('./scrapers/asda/allDrinks');
 const scrapeCoop = require('./scrapers/coop/allDrinks');
 const scrapeIceland = require('./scrapers/iceland/allDrinks');
 const scrapeMorrisons = require('./scrapers/morrisons/allDrinks');
@@ -34,7 +35,9 @@ prompt.get('Please select (0-7)', async (err, result) => {
       console.log('All Supermarkets selected');
       break;
     case '1':
-      console.log('ASDA selected');
+      console.log('Scraping ASDA...');
+      const asdaData = await scrapeAsda();
+      console.log(asdaData);
       break;
     case '2':
       console.log(
