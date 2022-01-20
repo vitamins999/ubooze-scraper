@@ -1,12 +1,15 @@
 const cheerio = require('cheerio');
 const currency = require('currency.js');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 
 const sainsburysScraper = async (url, drinkType, drinkSubtype) => {
   try {
     const products = [];
 
-    const browser = await puppeteer.launch();
+    puppeteer.use(StealthPlugin());
+
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
     await page.setViewport({ width: 1300, height: 1000 });
@@ -28,7 +31,7 @@ const sainsburysScraper = async (url, drinkType, drinkSubtype) => {
       }
 
       const priceText = $(el).find('.pricePerUnit').first().text().trim();
-      const price = currency(priceText.slice(0, -5).slice(1)).intValue;
+      const price = currency(priceText.slice(1)).intValue;
 
       let offer = $(el).find('.promotion').first().text().trim();
       if (!offer) {
