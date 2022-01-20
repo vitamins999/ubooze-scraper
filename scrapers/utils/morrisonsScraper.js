@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const currency = require('currency.js');
 const puppeteer = require('puppeteer');
-const scrollPageToBottom = require('puppeteer-autoscroll-down');
+const { scrollPageToBottom } = require('puppeteer-autoscroll-down');
 
 const morrisonsScraper = async (url, drinkType, drinkSubtype) => {
   try {

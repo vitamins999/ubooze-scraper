@@ -6,6 +6,7 @@ const prompt = require('prompt');
 
 const scrapeCoop = require('./scrapers/coop/allDrinks');
 const scrapeIceland = require('./scrapers/iceland/allDrinks');
+const scrapeMorrisons = require('./scrapers/morrisons/allDrinks');
 const scrapeSainsburys = require('./scrapers/sainsburys/allDrinks');
 const scrapeTesco = require('./scrapers/tesco/allDrinks');
 const scrapeWaitrose = require('./scrapers/waitrose/allDrinks');
@@ -46,7 +47,9 @@ prompt.get('Please select (0-7)', async (err, result) => {
       console.log(icelandData);
       break;
     case '4':
-      console.log('Morrisons selected');
+      console.log('Scraping Morrisons...');
+      const morrisonsData = await scrapeMorrisons();
+      console.log(morrisonsData);
       break;
     case '5':
       console.log('Scraping Sainsburys...');

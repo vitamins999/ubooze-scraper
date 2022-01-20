@@ -8,7 +8,7 @@ const beerLagerURL =
   'https://groceries.morrisons.com/browse/beer-wines-spirits-103120/lager-161713';
 
 const beerAleStoutURL =
-  'https://groceries.morrisons.com/browse/beer-wines-spirits-103120/ales-stouts-161710';
+  'https://groceries.morrisons.com/browse/beer-wines-spirits-103120/ale-184399';
 
 const beerCraftURL =
   'https://groceries.morrisons.com/browse/beer-wines-spirits-103120/beer-150066/craft-beer-161712';
