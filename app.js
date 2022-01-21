@@ -15,6 +15,35 @@ const scrapeWaitrose = require('./scrapers/waitrose/allDrinks');
 const knex = Knex(knexFile.development);
 Model.knex(knex);
 
+const scrapeSupermarketAndUpsert = async (supermarket) => {
+  let supermarketData;
+
+  console.log(`Scraping ${supermarket}...`);
+
+  if (supermarket === 'ASDA') {
+    supermarketData = await scrapeAsda();
+  } else if (supermarket === 'Co-op') {
+    console.log(
+      'Co-op currently not supported since most recent website update.'
+    );
+  } else if (supermarket === 'Iceland') {
+    supermarketData = await scrapeIceland();
+  } else if (supermarket === 'Morrisons') {
+    supermarketData = await scrapeMorrisons();
+  } else if (supermarket === 'Sainsburys') {
+    supermarketData = await scrapeSainsburys();
+  } else if (supermarket === 'Tesco') {
+    supermarketData = await scrapeTesco();
+  } else if (supermarket === 'Waitrose') {
+    supermarketData = await scrapeWaitrose();
+  }
+
+  // TODO: change this from logging in console to upserting into DB function
+  console.log(supermarketData);
+
+  console.log(`Successfully scraped ${supermarket}`);
+};
+
 console.log('Please select Supermarket from 0-7');
 console.log('0 - All Supermarkets');
 console.log('1 - ASDA');
@@ -35,39 +64,25 @@ prompt.get('Please select (0-7)', async (err, result) => {
       console.log('All Supermarkets selected');
       break;
     case '1':
-      console.log('Scraping ASDA...');
-      const asdaData = await scrapeAsda();
-      console.log(asdaData);
+      scrapeSupermarketAndUpsert('ASDA');
       break;
     case '2':
-      console.log(
-        'Co-op currently not supported since most recent website update.'
-      );
+      scrapeSupermarketAndUpsert('Co-op');
       break;
     case '3':
-      console.log('Scraping Iceland...');
-      const icelandData = await scrapeIceland();
-      console.log(icelandData);
+      scrapeSupermarketAndUpsert('Iceland');
       break;
     case '4':
-      console.log('Scraping Morrisons...');
-      const morrisonsData = await scrapeMorrisons();
-      console.log(morrisonsData);
+      scrapeSupermarketAndUpsert('Morrisons');
       break;
     case '5':
-      console.log('Scraping Sainsburys...');
-      const sainsburysData = await scrapeSainsburys();
-      console.log(sainsburysData);
+      scrapeSupermarketAndUpsert('Sainsburys');
       break;
     case '6':
-      console.log('Scraping Tesco...');
-      const tescoData = await scrapeTesco();
-      console.log(tescoData);
+      scrapeSupermarketAndUpsert('Tesco');
       break;
     case '7':
-      console.log('Scraping Waitrose...');
-      const waitroseData = await scrapeWaitrose();
-      console.log(waitroseData);
+      scrapeSupermarketAndUpsert('Waitrose');
       break;
     default:
       console.log('Valid number not entered.  Please try again.');
