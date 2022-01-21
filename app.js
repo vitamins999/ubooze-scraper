@@ -62,6 +62,13 @@ prompt.get('Please select (0-7)', async (err, result) => {
   switch (answer) {
     case '0':
       console.log('All Supermarkets selected');
+      await scrapeSupermarketAndUpsert('ASDA');
+      await scrapeSupermarketAndUpsert('Co-op');
+      await scrapeSupermarketAndUpsert('Iceland');
+      await scrapeSupermarketAndUpsert('Morrisons');
+      await scrapeSupermarketAndUpsert('Sainsburys');
+      await scrapeSupermarketAndUpsert('Tesco');
+      await scrapeSupermarketAndUpsert('Waitrose');
       break;
     case '1':
       scrapeSupermarketAndUpsert('ASDA');
