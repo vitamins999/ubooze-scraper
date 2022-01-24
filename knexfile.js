@@ -21,10 +21,7 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: 'pg',
     connection: process.env.SUPABASE_CONNECTION_PROD,
-    migrations: {
-      tableName: 'knex_migrations',
-    },
   },
 };
