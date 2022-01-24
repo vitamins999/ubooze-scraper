@@ -67,7 +67,7 @@ It's pretty simple, really.
 
    ![](images/steps1.webp)
 
-2. Press Ctrl-C to exit the program once the `Successfully scraped 'Selected-Supermarket'` message appears, or after `Successfully scraped Waitrose` if _0_ was selected to scrape all supermarkets.
+2. Press Ctrl-C to exit the program when instructed, or if _0_ was selected to scrape all supermarkets, press Ctrl-C after the message `Scraped data from Waitrose successfully written to database!` appears (Waitrose is the final supermarket).
 
    ![](images/steps2.webp)
 

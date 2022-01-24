@@ -30,6 +30,7 @@ const scrapeSupermarketAndUpsert = async (supermarket) => {
     console.log(
       'Co-op currently not supported since most recent website update.'
     );
+    process.exit();
   } else if (supermarket === 'Iceland') {
     supermarketData = await scrapeIceland();
   } else if (supermarket === 'Morrisons') {
@@ -42,9 +43,17 @@ const scrapeSupermarketAndUpsert = async (supermarket) => {
     supermarketData = await scrapeWaitrose();
   }
 
+  console.log(`\nSuccessfully scraped ${supermarket}!\n`);
+
+  console.log('Writing to database...\n');
   await upsertIntoDatabase(supermarketData, supermarket);
 
-  console.log(`Successfully scraped ${supermarket}`);
+  console.log(
+    `Scraped data from ${supermarket} successfully written to database! \n`
+  );
+  console.log(
+    'Press Ctrl-C to quit unless All Supermarkets was selected.  In which case, please wait until Waitrose has been successfully written to the database, as it is the final supermarket.\n'
+  );
 };
 
 console.log('Please select Supermarket from 0-7');
