@@ -42,8 +42,10 @@ const waitroseScraper = async (url, drinkType, drinkSubtype, scrollNum = 1) => {
         return;
       }
 
-      const size = $(el).find('.size___2HSwr').first().text();
+      const size = $(el).find('.size___12Ngq').first().text();
       const productName = `${productNameText} ${size}`;
+
+      console.log(productName);
 
       const priceText = $(el)
         .find('[data-test="product-pod-price"]')
