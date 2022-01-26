@@ -26,7 +26,7 @@ const icelandScraper = async (url, drinkType, drinkSubtype) => {
 
       const link = $(el).find('.name-link').attr('href');
 
-      const image = $(el).find('.thumb-link').find('img').attr('src');
+      const image = $(el).find('.thumb-link').find('img').attr('data-src');
 
       products.push({
         productName,
