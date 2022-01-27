@@ -37,17 +37,23 @@ const asdaScraper = async (url, drinkType, drinkSubtype) => {
       const priceText = $(el).find('.co-product__price').text().trim();
       const price = currency(priceText.slice(1)).intValue;
 
-      const offerText1 = $(el)
-        .find('.link-save-banner-large__config--height-normal')
-        .text();
-      const offerText2 = $(el)
-        .find('.link-save-banner-large__config--up-small')
-        .text()
-        .trim();
-      let offer = `${offerText1}${offerText2}`;
+      let offerElements = $(el).find('.link-save-banner-large__config');
 
-      if (!offer) {
+      let offer;
+
+      if (offerElements.length === 0) {
         offer = 'No offer';
+      } else if (offerElements.length === 3) {
+        offerText1 = offerElements.first().text().trim();
+        offerText2 = offerElements.first().next().text().trim();
+        offerText3 = offerElements.first().next().next().text().trim();
+
+        offer = `${offerText1} ${offerText2} ${offerText3}`;
+      } else {
+        offerText1 = offerElements.first().text().trim();
+        offerText2 = offerElements.first().next().text().trim();
+
+        offer = `${offerText1} ${offerText2}`;
       }
 
       let linkPartial = $(el).find('h3').find('a').attr('href');
