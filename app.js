@@ -14,9 +14,12 @@ const scrapeSainsburys = require('./scrapers/sainsburys/allDrinks');
 const scrapeTesco = require('./scrapers/tesco/allDrinks');
 const scrapeWaitrose = require('./scrapers/waitrose/allDrinks');
 
+const insertAllNewProducts = require('./database/insertAllProducts');
+const { allProducts } = require('./database/seeds/allProducts');
+
 const upsertIntoDatabase = require('./database/upsert');
 
-const knex = Knex(knexFile.production);
+const knex = Knex(knexFile.development);
 Model.knex(knex);
 
 const scrapeSupermarketAndUpsert = async (supermarket) => {
@@ -102,6 +105,9 @@ prompt.get('Please select (0-7)', async (err, result) => {
       break;
     case '7':
       await scrapeSupermarketAndUpsert('Waitrose');
+      break;
+    case 'add new products':
+      await insertAllNewProducts(allProducts);
       break;
     default:
       console.log('Valid number not entered.  Please try again.');
