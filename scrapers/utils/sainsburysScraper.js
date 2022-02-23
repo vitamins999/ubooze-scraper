@@ -53,8 +53,7 @@ const sainsburysScraper = async (url, drinkType, drinkSubtype) => {
         .find('img')
         .attr('src');
 
-      imagePartial = String(imagePartial);
-      const image = `https://${imagePartial.slice(2)}`;
+      const image = String(imagePartial);
 
       products.push({
         productName,
