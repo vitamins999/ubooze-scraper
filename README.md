@@ -1,5 +1,14 @@
 ![uBooze Scraper Banner Image](images/banner.webp)
 
+## Table of Contents <!-- omit in toc -->
+
+- [What is the point of this web scraper?](#what-is-the-point-of-this-web-scraper)
+- [Supermarkets Currently Supported](#supermarkets-currently-supported)
+- [Technologies Used](#technologies-used)
+- [Run Locally](#run-locally)
+- [So how do I use it?](#so-how-do-i-use-it)
+- [Authors](#authors)
+
 ## What is the point of this web scraper?
 
 The Ubooze Supermarket Scraper Utility is a custom made Node.js web scraper for UK supermarket alcohol prices, with PostgreSQL database integration for insertion and updating of those prices.
